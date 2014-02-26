@@ -8,19 +8,16 @@ class TreeNode:
 class Solution:
     # @param root, a tree node
     # @return an integer
-
-    def getMinDepth(self, root, depth):
-        if root.left == None and root.right == None:
-            return depth
-        if root.left == None:
-            return self.getMinDepth(root.right, depth+1)
-        elif root.right == None:
-            return self.getMinDepth(root.left, depth+1)
-        else:
-            return min(self.getMinDepth(root.left, depth+1), self.getMinDepth(root.right, depth+1))
     
     def minDepth(self, root):
         if root == None:
             return 0
-        return self.getMinDepth(root, 1)
+        if root.left == None and root.right == None:
+            return 1
+        if root.left == None:
+            return self.minDepth(root.right)+1
+        elif root.right == None:
+            return self.minDepth(root.left)+1
+        else:
+            return min(self.minDepth(root.left), self.minDepth(root.right))+1
         
