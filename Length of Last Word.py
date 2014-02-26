@@ -7,13 +7,8 @@ class Solution:
             if s[i] != ' ':
                 break;
         s = s[:(i+1)]
-        i = len(s)-1
-        spaceExist = False
-        for i in range(len(s)-1, -1, -1):
-            if s[i] == ' ':
-                spaceExist = True
-                break;
+        i = s.rfind(' ')
 
-        return len(s) if spaceExist==False else len(s)-i-1
+        return len(s) if i == -1 else len(s)-i-1
             
             
